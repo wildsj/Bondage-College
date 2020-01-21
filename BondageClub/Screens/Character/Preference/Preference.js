@@ -75,6 +75,10 @@ function PreferenceRun() {
 		PreferenceSubscreenChatRun();
 		return;
 	}
+	if (PreferenceSubscreen == "Games") {
+		PreferenceSubscreenGamesRun();
+		return;
+	}
 
 	// Draw the online preferences
 	MainCanvas.textAlign = "left";
@@ -112,6 +116,7 @@ function PreferenceRun() {
 	else {
 		DrawButton(1815, 75, 90, 90, "", "White", "Icons/Exit.png");
 		DrawButton(1815, 190, 90, 90, "", "White", "Icons/Chat.png");
+		DrawButton(1815, 305, 90, 90, "", "White", "Icons/Games.png");
 	}
 
 }
@@ -125,12 +130,23 @@ function PreferenceClick() {
 		return;
 	}
 
+	if (PreferenceSubscreen == "Games") {
+		PreferenceSubscreenGameClick();
+		return;
+	}
+
 	if ((MouseX >= 1815) && (MouseX < 1905) && (MouseY >= 75) && (MouseY < 165) && (PreferenceColorPick == "")) PreferenceExit();
 
 	// If the user clicks on the chat settings button
 	if ((MouseX >= 1815) && (MouseX < 1905) && (MouseY >= 190) && (MouseY < 280) && (PreferenceColorPick == "")) {
 		ElementRemove("InputCharacterLabelColor");
 		PreferenceSubscreen = "Chat";
+	}
+
+	// If the user clicks on the Chatroom games settings button
+	if ((MouseX >= 1815) && (MouseX < 1905) && (MouseY >= 305) && (MouseY < 395) && (PreferenceColorPick == "")) {
+		ElementRemove("InputCharacterLabelColor");
+		PreferenceSubscreen = "Games";
 	}
 
 	// If we must change the restrain permission level
@@ -212,6 +228,72 @@ function PreferenceSubscreenChatRun() {
 
 // Redirected to from the main Click function if the player is in the chat settings subscreen
 function PreferenceSubscreenChatClick() {
+	// If the user clicked one of the checkboxes
+	if ((MouseX >= 500) && (MouseX < 564)) {
+		if ((MouseY >= 492) && (MouseY < 556)) Player.ChatSettings.DisplayTimestamps = !Player.ChatSettings.DisplayTimestamps;
+		if ((MouseY >= 592) && (MouseY < 656)) Player.ChatSettings.ColorNames = !Player.ChatSettings.ColorNames;
+		if ((MouseY >= 692) && (MouseY < 756)) Player.ChatSettings.ColorActions = !Player.ChatSettings.ColorActions;
+		if ((MouseY >= 792) && (MouseY < 856)) Player.ChatSettings.ColorEmotes = !Player.ChatSettings.ColorEmotes;
+	}
+
+	// If the user used one of the BackNextButtons
+	if ((MouseX >= 1000) && (MouseX < 1350) && (MouseY >= 190) && (MouseY < 270)) {
+		if (MouseX <= 1175) PreferenceChatColorThemeIndex = (PreferenceChatColorThemeIndex <= 0) ? PreferenceChatColorThemeList.length - 1 : PreferenceChatColorThemeIndex - 1;
+		else PreferenceChatColorThemeIndex = (PreferenceChatColorThemeIndex >= PreferenceChatColorThemeList.length - 1) ? 0 : PreferenceChatColorThemeIndex + 1;
+		PreferenceChatColorThemeSelected = PreferenceChatColorThemeList[PreferenceChatColorThemeIndex];
+		Player.ChatSettings.ColorTheme = PreferenceChatColorThemeSelected;
+	}
+	if ((MouseX >= 1000) && (MouseX < 1350) && (MouseY >= 290) && (MouseY < 370)) {
+		if (MouseX <= 1175) PreferenceChatEnterLeaveIndex = (PreferenceChatEnterLeaveIndex <= 0) ? PreferenceChatEnterLeaveList.length - 1 : PreferenceChatEnterLeaveIndex - 1;
+		else PreferenceChatEnterLeaveIndex = (PreferenceChatEnterLeaveIndex >= PreferenceChatEnterLeaveList.length - 1) ? 0 : PreferenceChatEnterLeaveIndex + 1;
+		PreferenceChatEnterLeaveSelected = PreferenceChatEnterLeaveList[PreferenceChatEnterLeaveIndex];
+		Player.ChatSettings.EnterLeave = PreferenceChatEnterLeaveSelected;
+	}
+	if ((MouseX >= 1000) && (MouseX < 1350) && (MouseY >= 390) && (MouseY < 470)) {
+		if (MouseX <= 1175) PreferenceChatMemberNumbersIndex = (PreferenceChatMemberNumbersIndex <= 0) ? PreferenceChatMemberNumbersList.length - 1 : PreferenceChatMemberNumbersIndex - 1;
+		else PreferenceChatMemberNumbersIndex = (PreferenceChatMemberNumbersIndex >= PreferenceChatMemberNumbersList.length - 1) ? 0 : PreferenceChatMemberNumbersIndex + 1;
+		PreferenceChatMemberNumbersSelected = PreferenceChatMemberNumbersList[PreferenceChatMemberNumbersIndex];
+		Player.ChatSettings.MemberNumbers = PreferenceChatMemberNumbersSelected;
+	}
+
+	// If the user clicked the exit icon to return to the main screen
+	if ((MouseX >= 1815) && (MouseX < 1905) && (MouseY >= 75) && (MouseY < 165) && (PreferenceColorPick == "")) {
+		PreferenceSubscreen = "";
+		ElementCreateInput("InputCharacterLabelColor", "text", Player.LabelColor);
+	}
+}
+
+// Redirected to from the main Run function if the player is in the chat settings subscreen
+function PreferenceSubscreenGamesRun() {
+	MainCanvas.textAlign = "left";
+	DrawText(TextGet("ChatDisplaySettings"), 500, 125, "Black", "Gray");
+	DrawText(TextGet("ColorTheme"), 500, 225, "Black", "Gray");
+	DrawText(TextGet("EnterLeaveStyle"), 500, 325, "Black", "Gray");
+	DrawText(TextGet("DisplayMemberNumbers"), 500, 425, "Black", "Gray");
+	DrawText(TextGet("DisplayTimestamps"), 600, 525, "Black", "Gray");
+	DrawText(TextGet("ColorNames"), 600, 625, "Black", "Gray");
+	DrawText(TextGet("ColorActions"), 600, 725, "Black", "Gray");
+	DrawText(TextGet("ColorEmotes"), 600, 825, "Black", "Gray");
+	MainCanvas.textAlign = "center";
+	DrawBackNextButton(1000, 190, 350, 70, TextGet(PreferenceChatColorThemeSelected), "White", "",
+		() => TextGet((PreferenceChatColorThemeIndex == 0) ? PreferenceChatColorThemeList[PreferenceChatColorThemeList.length - 1] : PreferenceChatColorThemeList[PreferenceChatColorThemeIndex - 1]),
+		() => TextGet((PreferenceChatColorThemeIndex >= PreferenceChatColorThemeList.length - 1) ? PreferenceChatColorThemeList[0] : PreferenceChatColorThemeList[PreferenceChatColorThemeIndex + 1]));
+	DrawBackNextButton(1000, 290, 350, 70, TextGet(PreferenceChatEnterLeaveSelected), "White", "",
+		() => TextGet((PreferenceChatEnterLeaveIndex == 0) ? PreferenceChatEnterLeaveList[PreferenceChatEnterLeaveList.length - 1] : PreferenceChatEnterLeaveList[PreferenceChatEnterLeaveIndex - 1]),
+		() => TextGet((PreferenceChatEnterLeaveIndex >= PreferenceChatEnterLeaveList.length - 1) ? PreferenceChatEnterLeaveList[0] : PreferenceChatEnterLeaveList[PreferenceChatEnterLeaveIndex + 1]));
+	DrawBackNextButton(1000, 390, 350, 70, TextGet(PreferenceChatMemberNumbersSelected), "White", "",
+		() => TextGet((PreferenceChatMemberNumbersIndex == 0) ? PreferenceChatMemberNumbersList[PreferenceChatMemberNumbersList.length - 1] : PreferenceChatMemberNumbersList[PreferenceChatMemberNumbersIndex - 1]),
+		() => TextGet((PreferenceChatMemberNumbersIndex >= PreferenceChatMemberNumbersList.length - 1) ? PreferenceChatMemberNumbersList[0] : PreferenceChatMemberNumbersList[PreferenceChatMemberNumbersIndex + 1]));
+	DrawButton(500, 492, 64, 64, "", "White", (Player.ChatSettings && Player.ChatSettings.DisplayTimestamps) ? "Icons/Checked.png" : "");
+	DrawButton(500, 592, 64, 64, "", "White", (Player.ChatSettings && Player.ChatSettings.ColorNames) ? "Icons/Checked.png" : "");
+	DrawButton(500, 692, 64, 64, "", "White", (Player.ChatSettings && Player.ChatSettings.ColorActions) ? "Icons/Checked.png" : "");
+	DrawButton(500, 792, 64, 64, "", "White", (Player.ChatSettings && Player.ChatSettings.ColorEmotes) ? "Icons/Checked.png" : "");
+	DrawButton(1815, 75, 90, 90, "", "White", "Icons/Exit.png");
+	DrawCharacter(Player, 50, 50, 0.9);
+}
+
+// Redirected to from the main Click function if the player is in the chat settings subscreen
+function PreferenceSubscreenGameClick() {
 	// If the user clicked one of the checkboxes
 	if ((MouseX >= 500) && (MouseX < 564)) {
 		if ((MouseY >= 492) && (MouseY < 556)) Player.ChatSettings.DisplayTimestamps = !Player.ChatSettings.DisplayTimestamps;
