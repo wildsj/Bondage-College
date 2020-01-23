@@ -33,6 +33,8 @@ Cloth,BondageDress2,Bondage Dress Style 2
 Cloth,ShoulderlessTop,Shoulderless Top
 ClothLower,,Bottom
 ClothLower,Skirt1,Skirt
+ClothLower,Skirt2,Sailor Skirt
+ClothLower,Skirt3,Sailor Skirt Short
 ClothLower,TennisSkirt1,Tennis
 ClothLower,Jeans1,Jeans
 ClothLower,Shorts1,Shorts
@@ -416,7 +418,7 @@ ItemPelvis,OrnateChastityBelt,Ornate Chastity Belt
 ItemPelvis,SteelChastityPanties,Steel Chastity Panties
 ItemPelvis,HarnessPanties1,Bondage Harness
 ItemPelvis,LoveChastityBelt,Love Chastity Belt
-ItemPelvis,DiaperCover,Plastic Diaper Cover
+ItemPelvis,DiaperCover,Plastic Coverd Diaper
 ItemPelvis,LeatherCrop,Leather Crop
 ItemPelvis,LeatherWhip,Leather Whip
 ItemPelvis,SpankingToys,Spanking Toys
@@ -461,6 +463,11 @@ ItemBreast,PolishedChastityBra,Polished Chastity Bra
 ItemBreast,OrnateChastityBra,Ornate Chastity Bra
 ItemBreast,LeatherCrop,Leather Crop
 ItemBreast,LeatherWhip,Leather Whip
+ItemBondageCloth,MaidOutfit1,Maid Lockable
+ItemBondageCloth,MaidOutfit2,Maid Exposed Lockable
+ItemBondageCloth,AdultBabyDress1,Puffy Baby Dress Lockable
+ItemBondageCloth,AdultBabyDress2,Bows Baby Dress Lockable
+ItemBondageCloth,AdultBabyDress3,Flower Baby dress Lockable
 ItemArms,,Arms
 ItemArms,NylonRope,Nylon Rope
 ItemArms,HempRope,Hemp Rope
