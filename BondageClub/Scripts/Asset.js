@@ -13,6 +13,7 @@ function AssetGroupAdd(NewAssetFamily, NewAsset) {
 		ParentGroupName: (NewAsset.ParentGroup == null) ? "" : NewAsset.ParentGroup,
 		Category: (NewAsset.Category == null) ? "Appearance" : NewAsset.Category,
 		IsDefault: (NewAsset.Default == null) ? true : NewAsset.Default,
+		IsOccasional: (NewAsset.Occasionally == null) ? true : NewAsset.Default,
 		IsRestraint: (NewAsset.IsRestraint == null) ? false : NewAsset.IsRestraint,
 		AllowNone: (NewAsset.AllowNone == null) ? true : NewAsset.AllowNone,
 		AllowColorize: (NewAsset.AllowColorize == null) ? true : NewAsset.AllowColorize,
