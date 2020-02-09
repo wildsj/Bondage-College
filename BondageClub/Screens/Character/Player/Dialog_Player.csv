@@ -17,6 +17,7 @@ MustCollaredFirst,,,A collar must be fitted first to attach accessories to.
 NoClothAndCollared,,,Remove some clothes and requires a collar.
 LegsCannotOpen,,,Legs cannot open.
 LegsCannotClose,,,Legs cannot close.
+AllowKneelingFirst,,,Must be able to kneel first.
 MustStandUpFirst,,,Must stand up first.
 MustFreeFeetFirst,,,Must free feet first.
 MustFreeLegsFirst,,,Must free legs first.
