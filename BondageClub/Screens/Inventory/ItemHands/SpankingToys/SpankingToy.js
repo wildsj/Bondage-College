@@ -35,6 +35,10 @@ const SpankingInventory = [
 	}, {
 		Name: "TennisRacket",
 		ExpressionTrigger: [{ Group: "Blush", Name: "Low", Timer: 10 }, { Group: "Eyebrows", Name: "Soft", Timer: 10 }]
+	}, {
+		Name: "HairBrush",
+		Bonus: [{ Type: "KidnapDomination", Factor: 3 }],
+		ExpressionTrigger: [{ Group: "Blush", Name: "Low", Timer: 10 }, { Group: "Eyebrows", Name: "Soft", Timer: 10 }]
 	}
 ];
 

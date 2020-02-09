@@ -55,6 +55,7 @@ function AudioPlayContent(data) {
 				case "HeartCrop": audioFile = "Audio/SmackBareSkin04-2.mp3"; break;
 				case "Paddle":
 				case "WhipPaddle":
+				case "HairBrush":
 				case "TennisRacket": audioFile = "Audio/SmackBareSkin04-3.mp3"; break;
 				case "Whip": audioFile = "Audio/SmackWhip1.mp3"; break;
 				case "CattleProd": audioFile = "Audio/Shocks.mp3"; break;
