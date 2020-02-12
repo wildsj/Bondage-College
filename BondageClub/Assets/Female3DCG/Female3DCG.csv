@@ -4,7 +4,7 @@ Cloth,MaidOutfit1,Maid
 Cloth,MaidOutfit2,Maid Exposed
 Cloth,StudentOutfit1,Student Black
 Cloth,StudentOutfit2,Student Bow
-Cloth,StudentOutfit3,Sailor Top
+Cloth,StudentOutfit3,Student Top
 Cloth,BabydollDress1,Babydoll Dress
 Cloth,TeacherOutfit1,Teacher
 Cloth,ChineseDress1,Chinese Dress
@@ -35,16 +35,16 @@ Cloth,ShoulderlessTop,Shoulderless Top
 Cloth,Dress3,Long Dress
 Cloth,ComfyTop,Sleep Top
 ClothAccessory,,Cloth Accessory
-ClothAccessory,StudentOutfit3Scarf,Sailor Scarf
-ClothAccessory,StudentOutfit3Bow1,Sailor Bow 1
-ClothAccessory,StudentOutfit3Bow2,Sailor Bow 2
-ClothAccessory,StudentOutfit3Bow3,Sailor Bow 3
+ClothAccessory,StudentOutfit3Scarf,Student Scarf
+ClothAccessory,StudentOutfit3Bow1,Student Bow 1
+ClothAccessory,StudentOutfit3Bow2,Student Bow 2
+ClothAccessory,StudentOutfit3Bow3,Student Bow 3
 Suit,,Upper Suit
 Suit,Catsuit,Catsuit
 ClothLower,,Bottom
 ClothLower,Skirt1,Skirt
-ClothLower,Skirt2,Sailor Skirt
-ClothLower,Skirt3,Sailor Skirt Short
+ClothLower,Skirt2,Student Skirt
+ClothLower,Skirt3,Student Skirt Short
 ClothLower,TennisSkirt1,Tennis
 ClothLower,Jeans1,Jeans
 ClothLower,Shorts1,Shorts
@@ -390,7 +390,7 @@ ItemVulva,VibratingWand,Vibrating Wand
 ItemVulva,VibratorRemote,Vibrating Items Remote
 ItemVulva,VibratingLatexPanties,Vibrating Latex Panties
 ItemVulva,WandBelt,Wand Belt
-ItemVulva,SolidDildo,Penis Dildo
+ItemVulva,PenisDildo,Penis Dildo
 ItemVulva,VibratingDildo,Vibrating Dildo
 ItemVulva,InflatableVibeDildo,Inflatable Vibrating Dildo
 ItemVulva,ClitoralStimulator,Clitoral Stimulator
