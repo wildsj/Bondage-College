@@ -34,6 +34,9 @@ Cloth,BondageDress2,Bondage Dress Style 2
 Cloth,ShoulderlessTop,Shoulderless Top
 Cloth,Dress3,Long Dress
 Cloth,ComfyTop,Sleep Top
+Cloth,WeddingDress1,Wedding Dress
+Cloth,WeddingDress2,Shoulderless Wedding Dress
+Cloth,BridesmaidDress1,Bridesmaid Dress
 Cloth,Gown1, Puffball Gown
 Cloth,Gown2Top, Hobble Gown
 ClothAccessory,,Cloth Accessory
@@ -375,6 +378,7 @@ ItemFeet,SpreaderMetal, Metal Leg Spreader
 ItemFeet,BallChain,Ball And Chain
 ItemFeet,AnkleShackles, Ankle Shackles
 ItemFeet,Zipties, Zip Ties
+ItemFeet,Chains,Chains
 ItemLegs,,Legs
 ItemLegs,NylonRope,Nylon Rope
 ItemLegs,HempRope,Hemp Rope
@@ -387,6 +391,7 @@ ItemLegs,LegBinder,Leg Binder
 ItemLegs,HobbleSkirt,Hobble Skirt
 ItemLegs,WoodenHorse,Wooden Horse
 ItemLegs,Zipties,Zip Ties
+ItemLegs,Chains,Chains
 ItemVulva,,Vulva
 ItemVulva,VibratingEgg,Vibrating Egg
 ItemVulva,VibratingWand,Vibrating Wand
@@ -526,6 +531,7 @@ ItemArms,FullLatexSuit,Full LockDown Latex Suit
 ItemArms,Zipties,Zip Ties
 ItemArms,BoxTieArmbinder,Latex Box-Tie Armbinder
 ItemArms,BondageBouquet,Bondage Bouquet 
+ItemArms,Chains,Chains
 ItemHands,,Hands
 ItemHands,PaddedMittens,Padded Mittens
 ItemHands,PawMittens,Paw Mittens
