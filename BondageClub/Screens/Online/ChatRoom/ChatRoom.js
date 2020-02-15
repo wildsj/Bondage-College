@@ -40,17 +40,24 @@ function ChatRoomCreateElement() {
 		document.getElementById("InputChat").setAttribute("maxLength", 250);
 		document.getElementById("InputChat").setAttribute("autocomplete", "off");
 		ElementFocus("InputChat");
-	} else if (document.getElementById("InputChat").style.display == "none") {
-		ElementFocus("InputChat");
-	}
+	} else if (document.getElementById("InputChat").style.display == "none") ElementFocus("InputChat");
 
 	// Creates the chat log
 	if (document.getElementById("TextAreaChatLog") == null) {
+
+		// Sets the size and position
 		ElementCreateDiv("TextAreaChatLog");
 		ElementPositionFix("TextAreaChatLog", 36, 1005, 5, 988, 859);
-		ElementContent("TextAreaChatLog", "");
 		ElementScrollToEnd("TextAreaChatLog");
 		ChatRoomRefreshChatSettings(Player);
+
+		// If we relog, we reload the previous chat log
+		if (RelogChatLog != null) {
+			while (RelogChatLog.children.length > 0)
+				document.getElementById("TextAreaChatLog").appendChild(RelogChatLog.children[0]);
+			RelogChatLog = null;
+		} else ElementContent("TextAreaChatLog", "");
+
 	} else if (document.getElementById("TextAreaChatLog").style.display == "none") {
 		setTimeout(() => ElementScrollToEnd("TextAreaChatLog"), 100);
 		ChatRoomRefreshChatSettings(Player);
@@ -315,14 +322,51 @@ function ChatRoomSendChat() {
 		if (m.indexOf("/dice") == 0) {
 			
 			// The player can roll a dice, if no size is specified, a 6 sided dice is assumed
-			var Dice = (isNaN(parseInt(msg.substring(5, 50).trim()))) ? 6 : parseInt(msg.substring(5, 50).trim());
-			if ((Dice < 4) || (Dice > 100)) Dice = 6;
-			msg = "ActionDice";
-			var Dictionary = [];
-			Dictionary.push({Tag: "SourceCharacter", Text: Player.Name});
-			Dictionary.push({Tag: "DiceType", Text: Dice.toString()});
-			Dictionary.push({Tag: "DiceResult", Text: (Math.floor(Math.random() * Dice) + 1).toString()});
-			if (msg != "") ServerSend("ChatRoomChat", { Content: msg, Type: "Action", Dictionary: Dictionary} );
+			// var Dice = (isNaN(parseInt(msg.substring(5, 50).trim()))) ? 6 : parseInt(msg.substring(5, 50).trim());
+			
+			if(/(^\d+)[dD](\d+$)/.test(msg.substring(5, 50).trim())){
+
+				var Roll = /(^\d+)[dD](\d+$)/.exec((msg.substring(5, 50).trim()));
+				var DiceNumber = (!Roll) ? 1 : parseInt(Roll[1]);
+				var DiceSize =  (!Roll) ? 6 : parseInt(Roll[2]);
+				if ((DiceNumber < 1) || (DiceNumber > 100)) DiceNumber = 1 ;
+				
+			}
+			else if(/(^\d+$)/.test((msg.substring(5, 50).trim()))){
+				var Roll = /(^\d+)/.exec((msg.substring(5, 50).trim()));
+				var DiceNumber = 1;
+				var DiceSize =  (!Roll) ? 6 : parseInt(Roll[1]);	
+			}
+			else{
+				DiceNumber = 0;
+			}
+			if(DiceNumber > 0) {
+
+				if ((DiceSize < 2) || (DiceSize > 100)) DiceSize = 6;
+				var CurrentRoll = 0;
+				var Result = [];
+				var Total = 0;
+				while(CurrentRoll < DiceNumber)
+				{
+					var Roll = Math.floor(Math.random() * DiceSize) + 1
+					Result.push(Roll);
+					Total += Roll;
+					CurrentRoll++;
+				}
+				msg = "ActionDice";
+				var Dictionary = [];
+				Dictionary.push({Tag: "SourceCharacter", Text: Player.Name});
+				Dictionary.push({Tag: "DiceType", Text: DiceNumber.toString() + "D" + DiceSize.toString()});
+				if(DiceNumber > 1){
+					Result.sort((a, b) => a - b);
+					Dictionary.push({Tag: "DiceResult", Text: Result.toString() + " = " + Total.toString()});
+				}
+				else if(DiceNumber == 1){
+					Dictionary.push({Tag: "DiceResult", Text: Total.toString()});
+				}
+				if (msg != "") ServerSend("ChatRoomChat", { Content: msg, Type: "Action", Dictionary: Dictionary} );
+			}
+
 
 		} else if (m.indexOf("/coin") == 0) {
 

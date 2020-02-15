@@ -39,9 +39,24 @@ function ServerInfo(data) {
 function ServerDisconnect(data) {
 	if (Player.Name != "") {
 		if (CurrentScreen != "Relog") {
+
+			// Exits out of any chatroom
+			if (CurrentScreen == "ChatRoom") {
+				RelogChatLog = document.getElementById("TextAreaChatLog").cloneNode(true);
+				RelogChatLog.id = "RelogChatLog";
+				RelogChatLog.name = "RelogChatLog";
+				ElementRemove("InputChat");
+				ElementRemove("TextAreaChatLog");
+				CurrentScreen = "ChatSearch";
+				CurrentModule = "Online";
+				CurrentCharacter = null;
+			}
+
+			// Keeps the relog data
 			RelogData = { Screen: CurrentScreen, Module: CurrentModule, Character: CurrentCharacter };
 			CurrentCharacter = null;
 			CommonSetScreen("Character", "Relog");
+
 		}
 	}
 	else if (CurrentScreen == "Login") LoginMessage = TextGet((data != null) ? data : "ErrorDisconnectedFromServer");

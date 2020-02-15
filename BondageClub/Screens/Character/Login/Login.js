@@ -188,8 +188,15 @@ function LoginResponse(C) {
 			LoginMessage = "";
 			ElementRemove("InputPassword");
 			Player.OnlineID = C.ID.toString();
+			CurrentModule = RelogData.Module;
+			CurrentScreen = RelogData.Screen;
 			CurrentCharacter = RelogData.Character;
-			CommonSetScreen(RelogData.Module, RelogData.Screen);
+			TextLoad();
+			if ((ChatRoomData != null) && (ChatRoomData.Name != null) && (ChatRoomData.Name != "")) {
+				CommonSetScreen("Online", "ChatSearch");
+				ChatRoomPlayerCanJoin = true;
+				ServerSend("ChatRoomJoin", { Name: ChatRoomData.Name });
+			}
 			return;
 		}
 
@@ -353,9 +360,7 @@ function LoginClick() {
 
 // When the user press "enter" we try to login
 function LoginKeyDown() {
-	if (KeyPress == 13) {
-		LoginDoLogin();
-	}
+	if (KeyPress == 13) LoginDoLogin();
 }
 
 // If we must try to login (make sure we don't send the login query twice)

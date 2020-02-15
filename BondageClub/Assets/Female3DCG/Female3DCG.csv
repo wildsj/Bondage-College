@@ -16,6 +16,7 @@ Cloth,MistressTop1,Mistress Top
 Cloth,AdultBabyDress1,Puffy Baby Dress
 Cloth,AdultBabyDress2,Bows Baby Dress
 Cloth,AdultBabyDress3,Flower Baby dress
+Cloth,AdultBabyDress4,Shiny Baby dress
 Cloth,NurseUniform,Nurse Uniform
 Cloth,BunnyCollarCuffs,Bunny Girl Accessories
 Cloth,Robe1,Robe
@@ -41,6 +42,7 @@ Cloth,Gown1,Puffball Gown
 Cloth,Gown2Top,Hobble Gown
 Cloth,Gown3,Shiny Gown
 Cloth,MaidApron1,Maid Apron
+Cloth,MaidApron2,Exposed Maid Apron
 ClothAccessory,,Cloth Accessory
 ClothAccessory,StudentOutfit3Scarf,Student Scarf
 ClothAccessory,StudentOutfit3Bow1,Student Bow 1
@@ -118,7 +120,9 @@ Panties,Panties13,Satin Bikini
 Panties,Panties14,High Cut
 Panties,Panties15,Thong
 Panties,Bikini1,Frilled Bikini
-Panties,Diapers1,Diapers
+Panties,Diapers1,Diaper
+Panties,Diapers2,Plastic Covered Diaper
+Panties,Diapers3,Satin Covered Diaper
 Panties,Panties16,Frill Panties
 Panties,MaidPanties1,Maid Panties
 Panties,LatexPanties1,Latex Panties
@@ -485,6 +489,7 @@ ItemTorso,Corset4,Under Bust Corset
 ItemTorso,Corset5,Floral Corset
 ItemTorso,LeatherBreastBinder,Leather Breast Binder
 ItemTorso,LatexCorset1,Latex Corset
+ItemTorso,Corset2,Corset
 ItemNipples,,Nipples
 ItemNipples,NippleClamp,Nipple Clamps
 ItemNipples,VibeNippleClamp,Vibrating Nipple Clamps
