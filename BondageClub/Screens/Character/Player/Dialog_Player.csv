@@ -815,6 +815,15 @@ CollarNameTagLoverSet,,,SourceCharacter uses a NameTagType lover name tag on Des
 CollarNameTagLoverTypeCookie,,,Cookie
 CollarNameTagLoverTypeLover,,,Lover
 CollarNameTagLoverTypeMuffin,,,Muffin
+SelectCollarNameTagLivestockType,,,Select what tag you want to use
+SelectCollarNameTagLivestockTypeLocked,,,You cannot change the tag while it's locked
+CollarNameTagLivestockSet,,,SourceCharacter uses a NameTagType livestock name tag on DestinationCharacter collar.
+CollarNameTagLivestockTypeAnimal,,,Animal
+CollarNameTagLivestockTypeBreedMe,,,BreedMe
+CollarNameTagLivestockTypeCow,,,Cow
+CollarNameTagLivestockTypeMeat,,,Meat
+CollarNameTagLivestockTypeMilkMe,,,MilkMe
+CollarNameTagLivestockTypePig,,,Pig
 RoundPiercingPoseBase,,,Base
 RoundPiercingPoseChain,,,Chain
 RoundPiercingRestrainBase,,,SourceCharacter detaches extras from DestinationCharacter round piercings.

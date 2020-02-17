@@ -77,6 +77,10 @@ var InventoryItemNeckSlaveCollarTypes = [
         Name: "OrnateCollar",
         Image: "OrnateCollar",
         Property: { Type: "OrnateCollar", Effect: [], Block: [] }
+	},{
+        Name: "SlenderSteelCollar",
+        Image: "SlenderSteelCollar",
+        Property: { Type: "SlenderSteelCollar", Effect: [], Block: [] }
 	},
 ];
 

@@ -596,6 +596,7 @@ ItemNeck,LatexPostureCollar,Latex Posture Collar Gag
 ItemNeck,LeatherCorsetCollar,Leather Corset Collar Gag
 ItemNeck,HighSecurityCollar,High Security Collar
 ItemNeck,OrnateCollar,Ornate Collar
+ItemNeck,SlenderSteelCollar,Slender Steel Collar
 ItemNeckAccessories,,Collar
 ItemNeckAccessories,CollarBell,Bell
 ItemNeckAccessories,CollarBow,Bow
@@ -605,6 +606,7 @@ ItemNeckAccessories,CollarNameTag,Name Tag
 ItemNeckAccessories,CollarNameTagOval,Oval Name Tag
 ItemNeckAccessories,CollarNameTagPet,Pet Name Tag
 ItemNeckAccessories,CollarNameTagLover,Lover Name Tag
+ItemNeckAccessories,CollarNameTagLivestock,Livestock Name Tag
 ItemNeckAccessories,CollarMoon,Moon Pendant
 ItemNeckAccessories,CollarSun,Sun Pendant
 ItemNeckAccessories,CollarLapis,Lapis Pendant

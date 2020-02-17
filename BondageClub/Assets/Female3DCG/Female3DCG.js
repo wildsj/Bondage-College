@@ -112,7 +112,7 @@ var AssetFemale3DCG = [
 			{ Name: "StudentOutfit3Bow2" },
 			{ Name: "StudentOutfit3Bow3" },
 			{ 
-				Name: "Bouquet", Value: 40, Left: 175, Top: 350, Priority: 35, AllowPose: ["BackBoxTie", "BackCuffs", "BackElbowTouch", "Bolero", "Yoked", "Hogtied"], BuyGroup: "Bouquet",
+				Name: "Bouquet", Value: 40, Left: 175, Top: 350, Priority: 41, AllowPose: ["BackBoxTie", "BackCuffs", "BackElbowTouch", "Bolero", "Yoked", "Hogtied"], BuyGroup: "Bouquet",
 				Layer: [
 					{ Name: "Base", AllowColorize: false },
 					{ Name: "Flowers", AllowColorize: true }
@@ -1240,7 +1240,7 @@ var AssetFemale3DCG = [
 			{ Name: "Zipties", SelfBondage: true, Value: 20, SetPose: ["BackElbowTouch"], Effect: ["Block", "Prone"], Difficulty: 6, BuyGroup: "Zipties", RemoveTime: 6 },
 			{ Name: "BoxTieArmbinder", SelfBondage: false, SelfUnlock: false, Value: 140, SetPose: ["BackElbowTouch", "Bolero"], Block: ["ItemHands"], Effect: ["Block", "Prone"], Time: 40, RemoveTime: 30, Difficulty: 11, AllowLock: true },
 			{ 
-				Name: "BondageBouquet", Value: 40, Priority: 35, Difficulty: 3, Effect: ["Prone"], Time: 15, AllowLock: true, Random: false, BuyGroup: "Bouquet",
+				Name: "BondageBouquet", Value: 40, Priority: 41, Difficulty: 3, Effect: ["Prone"], Time: 15, AllowLock: true, Random: false, BuyGroup: "Bouquet",
 				Layer: [
 					{ Name: "Base", AllowColorize: false },
 					{ Name: "Flowers", AllowColorize: true }
@@ -1315,7 +1315,7 @@ var AssetFemale3DCG = [
 			{ Name: "LeatherCollar", Value: 20, Time: 5, Difficulty: 50, AllowLock: true },
 			{ Name: "LeatherCollarBell", Value: 30, Time: 5, Difficulty: 50, AllowLock: true },
 			{ Name: "LeatherCollarBow", Value: 25, Time: 5, Difficulty: 50, AllowLock: true },
-			{ Name: "SlaveCollar", Priority: 33, Random: false, Effect: ["Lock"], OwnerOnly: true, Extended: true, Enable: false, Value: -1, Time: 5, Difficulty: 50, AllowEffect: ["GagNormal"], AllowBlock: ["ItemMouth", "ItemMouth2", "ItemMouth3"], AllowType: ["SteelPosture", "LeatherPosture", "PetCollar", "HighCollar", "LeatherCollarBell", "LeatherCollarBow", "MaidCollar", "BatCollar", "HighSecurityCollar", "SpikeCollar", "BordelleCollar", "LeatherCorsetCollar", "StrictPostureCollar", "LatexPostureCollar", "HeartCollar", "NobleCorsetCollar", "OrnateCollar", "LoveLeatherCollar"]},
+			{ Name: "SlaveCollar", Priority: 33, Random: false, Effect: ["Lock"], OwnerOnly: true, Extended: true, Enable: false, Value: -1, Time: 5, Difficulty: 50, AllowEffect: ["GagNormal"], AllowBlock: ["ItemMouth", "ItemMouth2", "ItemMouth3"], AllowType: ["SteelPosture", "LeatherPosture", "PetCollar", "HighCollar", "LeatherCollarBell", "LeatherCollarBow", "MaidCollar", "BatCollar", "HighSecurityCollar", "SpikeCollar", "BordelleCollar", "LeatherCorsetCollar", "StrictPostureCollar", "LatexPostureCollar", "HeartCollar", "NobleCorsetCollar", "OrnateCollar", "LoveLeatherCollar", "SlenderSteelCollar"]},
 			{ Name: "ClubSlaveCollar", Random: false, Effect: ["Lock"], Enable: false, Value: -1, Time: 5, Difficulty: 50, ExpressionTrigger: [{ Group: "Blush", Name: "Medium", Timer: 15 }] },
 			{ Name: "ShockCollar", Random: false, Extended: true, Effect: ["ReceiveShock"], BuyGroup: "ShockCollar", Value: 80, Time: 15, Difficulty: 50, AllowLock: true, ExpressionTrigger: [{ Group: "Eyebrows", Name: "Soft", Timer: 10 }] },
 			{ Name: "ShockCollarRemote", Random: false, Wear: false, Effect: ["TriggerShock"], BuyGroup: "ShockCollar", Value: -1, ExpressionTrigger: [{ Group: "Eyebrows", Name: "Soft", Timer: 10 }, { Group: "Blush", Name: "Soft", Timer: 15 }, { Group: "Eyes", Name: "Closed", Timer: 5 }] },
@@ -1347,7 +1347,8 @@ var AssetFemale3DCG = [
 					{ Name: "Collar", AllowColorize: true },
 					{ Name: "Gem", AllowColorize: false }
 				]
-			}
+			},
+			{ Name: "SlenderSteelCollar", Value: 30, Time: 5, Difficulty: 50, AllowLock: true }
 		]
 	},
 
@@ -1369,6 +1370,7 @@ var AssetFemale3DCG = [
 			{ Name: "CollarNameTagOval", Value: 50, DefaultColor: "#aaa366", Random: false, IsRestraint: false, Prerequisite: "Collared", Time: 5, Difficulty: 20, Extended: true, AllowLock: true, PropertyLocked: true, AllowType: ["Babe", "Bandit", "Bimbo", "Bratty", "Chair", "Chaste", "Crazy", "Cumslut", "Cutie", "Damsel", "Doll", "EdgeMe", "Evil", "ForSale", "Greedy", "Happy", "Horny", "Kinky", "Lady", "LockMe", "Nude", "Nurse", "Nympho", "Painslut", "Pillow", "Punish", "Robber", "Sad", "Switch", "Table", "Ticklish", "Undress", "Victim", "Violent", "Worm"] },
 			{ Name: "CollarNameTagPet", Value: 50, DefaultColor: "#aaa366", Random: false, IsRestraint: false, Prerequisite: "Collared", Time: 5, Difficulty: 20, Extended: true, AllowLock: true, PropertyLocked: true, AllowType: ["Bunny", "Cat", "Dog", "Foxy", "Kitten", "Kitty", "Mochi", "Panda", "Pet", "PetMe", "Pixie", "Pony", "Puppy", "Racoon", "Sloth"] },
 			{ Name: "CollarNameTagLover", Value: -1, DefaultColor: "#aaa366", Random: false, IsRestraint: false, Prerequisite: "Collared", Time: 5, Difficulty: 20, Extended: true, AllowLock: true, PropertyLocked: true, AllowType: ["Cookie", "Lover", "Muffin"] },
+			{ Name: "CollarNameTagLivestock", Value: 50, Random: false, IsRestraint: false, Prerequisite: "Collared", Time: 5, Difficulty: 20, Extended: true, AllowLock: true, PropertyLocked: true, AllowType: ["Animal", "BreedMe", "Cow", "Meat", "MilkMe", "Pig"] },
 			{ Name: "CollarMoon", Value: 5, Random: false, Prerequisite: "Collared", Time: 5, Difficulty: 3, AllowLock: true },
 			{ Name: "CollarSun", Value: 10, Random: false, Prerequisite: "Collared", Time: 5, Difficulty: 3, AllowLock: true },
 			{ Name: "CollarLapis", Value: 10, Random: false, Prerequisite: "Collared", Time: 5, Difficulty: 3, AllowLock: true },
