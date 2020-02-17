@@ -30,9 +30,7 @@ function InventoryItemArmsChainsDraw() {
 		DrawText(DialogFind(Player, "ChainBondageSuspensionHogtied"), 1838, 800, "white", "gray");
 		DrawText(DialogFind(Player, "RequireBondageLevel").replace("ReqLevel", "8"), 1838, 850, "white", "gray");
 	}
-	else {
-		DrawText(DialogFind(Player, "CantChangeWhileLocked"), 1500, 500, "white", "gray");
-	}
+	else DrawText(DialogFind(Player, "CantChangeWhileLocked"), 1500, 500, "white", "gray");
 
 }
 
@@ -82,9 +80,7 @@ function InventoryItemArmsChainsSetPose(NewType) {
 			InventoryWear(C, "SuspensionChains", "ItemHidden", DialogFocusItem.Color);
 		}
 	}
-	else { 
-		return; 
-	}
+	else return;
 	
 	// Adds the lock effect back if it was padlocked
 	if ((DialogFocusItem.Property.LockedBy != null) && (DialogFocusItem.Property.LockedBy != "")) {

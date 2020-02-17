@@ -192,16 +192,16 @@ function MainHallClick() {
 			"BDSMRoomBlue", "BDSMRoomPurple", "BDSMRoomRed", "BondageBedChamber",
 			"CeremonialVenue", "WeddingRoom", "WeddingArch", "WeddingBeach",
 			"ParkDay", "ParkNight", "Gardens", "ParkWinter", "XmasEve", "XmasDay", "StreetNight", "SnowyStreet",
-			"IndoorPool", "OutdoorPool", "PublicBath", "Beach", "PirateIsland", "PirateIslandNight",
+			"IndoorPool", "OutdoorPool", "PublicBath", "Onsen", "Beach", "PirateIsland", "PirateIslandNight",
 			"SheikhPrivate", "SheikhTent",
 			"ForestPath", "DeepForest", "SpookyForest", "WitchWood",
 			"ThroneRoom", "SecretChamber", "Dungeon", "DungeonRuin",
 			"AncientRuins", "JungleTemple", "SunTemple",
 			"AlchemistOffice",
 			"HellEntrance",
-			"SlumRuins", "SlumApartment", "AbandonedBuilding", "Industrial", "BackAlley",
+			"SlumRuins", "SlumApartment", "AbandonedBuilding", "AbandonedSideRoom", "Industrial", "BackAlley", "CreepyBasement", "Cellar",
 			"VaultCorridor",
-			"BarRestaurant", "ChillRoom", "Boudoir", "CozyLivingRoom", "RooftopParty", "CosyChalet", "BalconyNight"
+			"BarRestaurant", "ChillRoom", "Boudoir", "Kitchen", "DiningRoom", "CozyLivingRoom", "RooftopParty", "PartyBasement", "CosyChalet", "BalconyNight"
 		];
 		CommonSetScreen("Online", "ChatSearch");
 	}
