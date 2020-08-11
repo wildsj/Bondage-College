@@ -110,8 +110,9 @@ function MainHallRun() {
 		DrawButton(145, 145, 90, 90, "", "White", "Icons/Magic.png", TextGet("Magic"));
 		DrawButton(25, 145, 90, 90, "", "White", "Icons/Horse.png", TextGet("Stable"));
 
-		// Cafe
+		// Cafe, Easter
 		DrawButton(25, 265, 90, 90, "", "White", "Icons/Refreshsments.png", TextGet("Cafe"));
+		DrawButton(145, 265, 90, 90, "", "White", "Icons/Easter.png", TextGet("Easter"));
 	}
 
 	// Check if there's a new maid rescue event to trigger
@@ -244,8 +245,9 @@ function MainHallClick() {
 		if ((MouseX >=  145) && (MouseX <  235) && (MouseY >= 145) && (MouseY < 235)) MainHallWalk("Magic");
 		if ((MouseX >=  265) && (MouseX <  355) && (MouseY >= 145) && (MouseY < 235)) MainHallWalk("Nursery");
 
-		// Cafe
+		// Cafe, Easter
 		if ((MouseX >=   25) && (MouseX <  115) && (MouseY >= 265) && (MouseY < 355)) MainHallWalk("Cafe");
+		if ((MouseX >=  145) && (MouseX <  235) && (MouseY >= 265) && (MouseY < 355)) MainHallWalk("Easter");
 	}
 
 }
