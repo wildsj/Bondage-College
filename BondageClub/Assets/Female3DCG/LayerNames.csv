@@ -310,6 +310,10 @@ ItemMouthBoneGagBone,Bone
 ItemMouthBoneGagStraps,Straps
 ItemMouthXLBoneGagBone,Bone
 ItemMouthXLBoneGagStraps,Straps
+ItemMouthHarnessPacifierGagHarness,Harness Straps
+ItemMouthHarnessPacifierGagMetal,Metal Parts
+ItemMouthHarnessPacifierGagPacifierOuter,Pacifier
+ItemMouthHarnessPacifierGagPacifierInner,Pacifier Ring
 ItemMouthDusterGagDuster,Duster
 ItemMouthDusterGagPanel,Panel
 ItemMouthPantiesMaskDarkStripes,Dark Stripes
@@ -357,6 +361,10 @@ ItemMouth2BoneGagBone,Bone
 ItemMouth2BoneGagStraps,Straps
 ItemMouth2XLBoneGagBone,Bone
 ItemMouth2XLBoneGagStraps,Straps
+ItemMouth2HarnessPacifierGagHarness,Harness Straps
+ItemMouth2HarnessPacifierGagMetal,Metal Parts
+ItemMouth2HarnessPacifierGagPacifierOuter,Pacifier
+ItemMouth2HarnessPacifierGagPacifierInner,Pacifier Ring
 ItemMouth2DusterGagDuster,Duster
 ItemMouth2DusterGagPanel,Panel
 ItemMouth2PantiesMaskDarkStripes,Dark Stripes
@@ -404,6 +412,10 @@ ItemMouth3BoneGagBone,Bone
 ItemMouth3BoneGagStraps,Straps
 ItemMouth3XLBoneGagBone,Bone
 ItemMouth3XLBoneGagStraps,Straps
+ItemMouth3HarnessPacifierGagHarness,Harness Straps
+ItemMouth3HarnessPacifierGagMetal,Metal Parts
+ItemMouth3HarnessPacifierGagPacifierOuter,Pacifier
+ItemMouth3HarnessPacifierGagPacifierInner,Pacifier Ring
 ItemMouth3DusterGagDuster,Duster
 ItemMouth3DusterGagPanel,Panel
 ItemMouthFuturisticPanelGagMask,Muzzle
