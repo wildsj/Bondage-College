@@ -958,18 +958,18 @@ var AssetFemale3DCG = [
 		Left: 0,
 		Top: 150,
 		Asset: [
-			{ Name: "TailStrap", Fetish: ["Pet"], Value: 30, Layer: [
+			{ Name: "TailStrap", Fetish: ["Pet"], Value: 30, Top: 180, Layer: [
 				{ Name: "Tail"},
 				{ Name: "Ribbon"},
 				{ Name: "Bell"},
 			] },
-			{ Name: "HorseTailStrap", Fetish: ["Pony"], Value: 20, AllowPose: ["AllFours"] },
-			{ Name: "HorseTailStrap1", Fetish: ["Pony"], Value: 30, AllowPose: ["AllFours"] },
-			{ Name: "FoxTailsStrap", Fetish: ["Pet"], Priority: 2, Value: 50, Layer: [
+			{ Name: "HorseTailStrap", Fetish: ["Pony"], Value: 20, Top: 110, AllowPose: ["AllFours"] },
+			{ Name: "HorseTailStrap1", Fetish: ["Pony"], Value: 30, Top: 110, AllowPose: ["AllFours"] },
+			{ Name: "FoxTailsStrap", Fetish: ["Pet"], Priority: 2, Value: 50, Top: 120, Layer: [
 				{ Name: "Tips"},
 				{ Name: "Bases"}
 			] },
-			{ Name: "PuppyTailStrap", Fetish: ["Pet"], Value: 15, AllowPose: ["AllFours"] },
+			{ Name: "PuppyTailStrap", Fetish: ["Pet"], Value: 15, Top: 130, AllowPose: ["AllFours"] },
 			{ Name: "SuccubusTailStrap", Fetish: ["Pet"], Value: 10, AllowPose: ["AllFours"] },
 			{ Name: "SuccubusHeartTailStrap", Fetish: ["Pet"], Value: 15, Layer: [
 				{ Name: "Heart"},
@@ -978,21 +978,21 @@ var AssetFemale3DCG = [
 			{ Name: "RaccoonStrap", Fetish: ["Pet"], Value: 25 },
 			{ Name: "RaccoonTailStrap", Fetish: ["Pet"], Priority: 2, Value: 35 },
 			{ Name: "PuppyTailStrap1", Fetish: ["Pet"], Value: 20, AllowPose: ["AllFours"] },
-			{ Name: "KittenTailStrap1", Fetish: ["Pet"], Value: 20 },
+			{ Name: "KittenTailStrap1", Fetish: ["Pet"], Value: 20, Top: 100 },
 			{ Name: "KittenTailStrap2", Fetish: ["Pet"], Value: 20, AllowPose: ["AllFours"] },
-			{ Name: "FoxTailStrap1", Fetish: ["Pet"], Value: 20, Layer: [
+			{ Name: "FoxTailStrap1", Fetish: ["Pet"], Value: 20, Top: 170, Layer: [
 				{ Name: "Tip"},
 				{ Name: "Base"}
 			] },
-			{ Name: "FoxTailStrap2", Fetish: ["Pet"], Value: 20, Layer: [
+			{ Name: "FoxTailStrap2", Fetish: ["Pet"], Value: 20, Top: 200, Layer: [
 				{ Name: "Tip"},
 				{ Name: "Base"}
 			]},
 			{ Name: "WolfTailStrap1", Fetish: ["Pet"], Value: 20 },
 			{ Name: "WolfTailStrap2", Fetish: ["Pet"], Value: 20, AllowPose: ["AllFours"] },
-			{ Name: "WolfTailStrap3", Fetish: ["Pet"], Value: 20, AllowPose: ["AllFours"] },
+			{ Name: "WolfTailStrap3", Fetish: ["Pet"], Value: 20, Top: 140, AllowPose: ["AllFours"] },
 			{ Name: "DemonPlug", Fetish: ["Pet"], Value: 30, AllowPose: ["AllFours"] },
-			{ Name: "MouseTailStrap1", Fetish: ["Pet"], Value: 20 },
+			{ Name: "MouseTailStrap1", Fetish: ["Pet"], Value: 20, Top: 120 },
 			{ Name: "MouseTailStrap2", Fetish: ["Pet"], Value: 20 },	
 			{ Name: "CowtailStrap", Fetish: ["Pet"], BuyGroup: "CowTails", Value: 20, AllowPose: ["AllFours"] },
 			{ Name: "BunnyTailStrap", Fetish: ["Pet"], Value: 1, Visible: false, },
@@ -1528,7 +1528,7 @@ var AssetFemale3DCG = [
 			{ Name: "BlackButtPlug", Value: 15, Time: 10, Visible: false, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{ Name: "PenisPlug", Value: 20, Time: 10, Visible: false, BuyGroup: "PenisDildo", Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{
-				Name: "TailButtPlug", Fetish: ["Pet"], Value: 40, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
+				Name: "TailButtPlug", Fetish: ["Pet"], Value: 40, Time: 10, Top: 100, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
 					{ Name: "Tail" },
 					{ Name: "Ribbon" },
 					{ Name: "Bell" },
@@ -1536,22 +1536,22 @@ var AssetFemale3DCG = [
 			},
 			{ Name: "HorsetailPlug", Fetish: ["Pony"], Value: 30, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{ Name: "HorsetailPlug1", Fetish: ["Pony"], Value: 40, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "PuppyTailPlug", Fetish: ["Pet"], Value: 25, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "PuppyTailPlug1", Fetish: ["Pet"], Value: 30, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "SuccubusButtPlug", Fetish: ["Pet"], Value: 15, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "SuccubusHeartButtPlug", Fetish: ["Pet"], Value: 25, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
+			{ Name: "PuppyTailPlug", Fetish: ["Pet"], Value: 25, Time: 10, Top: 20, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "PuppyTailPlug1", Fetish: ["Pet"], Value: 30, Time: 10, Top: 30, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "SuccubusButtPlug", Fetish: ["Pet"], Value: 15, Time: 10, Top: 65, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "SuccubusHeartButtPlug", Fetish: ["Pet"], Value: 25, Time: 10, Top: 60, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
 					{ Name: "Tail" },
 					{ Name: "Heart" },
 				]
 			},
 			{
-				Name: "FoxTails", Fetish: ["Pet"], Priority: 2, Value: 60, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
+				Name: "FoxTails", Fetish: ["Pet"], Priority: 2, Value: 60, Time: 10, Top: 20, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
 					{ Name: "Tips" },
 					{ Name: "Bases" }
 				]
 			},
-			{ Name: "RaccoonButtPlug", Fetish: ["Pet"], Value: 40, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "RaccoonTailPlug", Fetish: ["Pet"], Priority: 2, Value: 50, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "RaccoonButtPlug", Fetish: ["Pet"], Value: 40, Time: 10, Top: 20, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "RaccoonTailPlug", Fetish: ["Pet"], Priority: 2, Value: 50, Time: 10, Top: 30, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{ Name: "AnalBeads", Value: 20, Time: 10, Visible: false, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{ Name: "AnalBeads2", Fetish: ["Metal"],  Value: 70, Time: 14, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowType: ["Base", "_2in", "_3in", "_4in", "_5in"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Extended: true, Activity: "MasturbateItem" },
 			{ Name: "ButtPump", Value: 35, Time: 10, Visible: false, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowType: ["Empty", "Light", "Inflated", "Bloated", "Maximum"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Extended: true },
@@ -1559,31 +1559,31 @@ var AssetFemale3DCG = [
 			{ Name: "InflVibeButtPlug", Value: 90, Time: 10, Visible: false, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], Effect: ["IsPlugged", "Egged"], AllowEffect: ["IsPlugged", "Egged", "Vibrating"], ExpressionTrigger: [{ Name: "Medium", Group: "Blush", Timer: 10 }] },
 			{ Name: "AnalHook", Fetish: ["Metal"], Value: 20, Time: 10, IsRestraint: true, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowEffect: ["IsPlugged", "Freeze", "Egged"], AllowType: ["Base", "Chain", "Hair"], ExpressionTrigger: [{ Name: "Medium", Group: "Blush", Timer: 10 }], Extended: true },
 			{ Name: "ButtPlugLock", Fetish: ["Metal"], Value: 75, Difficulty: 50, Time: 30, RemoveTime: 50, IsRestraint: true, AllowLock: true, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], AllowEffect: ["IsPlugged", "Tethered", "Freeze", "ForceKneel", "IsChained"], AllowType: ["Base", "ChainShort", "ChainLong"], ExpressionTrigger: [{ Name: "High", Group: "Blush", Timer: 10 }, { Name: "Closed", Group: "Eyes", Timer: 5 }, { Name: "Soft", Group: "Eyebrows", Timer: 5 }], Extended: true },
-			{ Name: "KittenTail1", Fetish: ["Pet"], Value: 30, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "KittenTail2", Fetish: ["Pet"], Value: 30, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "FoxTail1", Fetish: ["Pet"], Value: 50, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
+			{ Name: "KittenTail1", Fetish: ["Pet"], Value: 30, Time: 10, Top: 100, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "KittenTail2", Fetish: ["Pet"], Value: 30, Time: 10, Top: 30, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "FoxTail1", Fetish: ["Pet"], Value: 50, Time: 10, Top: 80, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
 					{ Name: "Base" },
 					{ Name: "Tip" },
 				]
 			},
-			{ Name: "FoxTail2", Fetish: ["Pet"], Value: 50, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
+			{ Name: "FoxTail2", Fetish: ["Pet"], Value: 50, Time: 10, Top: 100, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Layer: [
 					{ Name: "Base" },
 					{ Name: "Tip" },
 				]
 			},
-			{ Name: "WolfTail1", Fetish: ["Pet"], Value: 35, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "WolfTail2", Fetish: ["Pet"], Value: 35, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "WolfTail3", Fetish: ["Pet"], Value: 35, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "DemonPlug", Fetish: ["Pet"], Value: 35, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "MouseTail1", Fetish: ["Pet"], Value: 35, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
-			{ Name: "MouseTail2", Fetish: ["Pet"], Value: 35, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "WolfTail1", Fetish: ["Pet"], Value: 35, Time: 10, Top: 50, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "WolfTail2", Fetish: ["Pet"], Value: 35, Time: 10, Top: 60, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "WolfTail3", Fetish: ["Pet"], Value: 35, Time: 10, Top: 40, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "DemonPlug", Fetish: ["Pet"], Value: 35, Time: 10, Top: 70, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "MouseTail1", Fetish: ["Pet"], Value: 35, Time: 10, Top: 150, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "MouseTail2", Fetish: ["Pet"], Value: 35, Time: 10, Top: 180, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{ Name: "VibratingDildoPlug", Value: 60, Time: 10, Visible: false, BuyGroup: "VibratingDildo", Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], Effect: ["IsPlugged", "Egged"], AllowEffect: ["IsPlugged", "Egged", "Vibrating", "Edged"], DynamicScriptDraw: true },
 			{ Name: "BunnyTailPlug1", Fetish: ["Pet"], Value: 1, Time: 10, Visible: false, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{ Name: "BunnyTailPlug2", Fetish: ["Pet"], Value: 1, Time: 10, Visible: false, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			{ Name: "BunnyTailVibePlug", Fetish: ["Pet"], Effect: ["IsPlugged", "Egged"], Value: 75, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], Time: 10, ExpressionTrigger: [{ Group: "Blush", Name: "Low", Timer: 10 }], AllowEffect: ["Egged", "Vibrating"], Visible: false },
 			{ Name: "EggVibePlugXXL", Effect: ["IsPlugged", "Egged"], Value: 90, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], Time: 10, ExpressionTrigger: [{ Group: "Blush", Name: "High", Timer: 10 }], AllowEffect: ["Egged", "Vibrating"], Visible: false },
 			{ Name: "ShockPlug", Fetish: ["Masochism"], Value: 60, Time: 10, Visible: false, Extended: true, AlwaysExtend: true, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }], Activity: "ShockItem" },
-			{ Name: "Cowtail", Fetish: ["Pet"], BuyGroup: "CowTails", Value: 20, Time: 10, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
+			{ Name: "Cowtail", Fetish: ["Pet"], BuyGroup: "CowTails", Value: 20, Time: 10, Top: 80, Prerequisite: ["AccessVulva", "AccessVulvaSuitZip"], AllowPose: ["AllFours"], ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }] },
 			AssetSpankingToys
 		],
 		Color: ["Default", "#202020", "#808080", "#bbbbbb", "#aa8080", "#80aa80", "#8080aa", "#aaaa80", "#80aaaa", "#aa80aa", "#cc3333", "#33cc33", "#3333cc", "#cccc33", "#33cccc", "#cc33cc"]
