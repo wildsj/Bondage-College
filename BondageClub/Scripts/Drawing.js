@@ -236,7 +236,7 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed) {
 		if (C.RunScripts && C.HasScriptedAssets) {
 			var DynamicAssets = C.Appearance.filter(CA => CA.Asset.DynamicScriptDraw);
 			DynamicAssets.forEach(Item =>
-				window["Assets" + Item.Asset.Group.Name + Item.Asset.Name + "ScriptDraw"]({
+				CommonCallFunctionByNameWarn(`Assets${Item.Asset.Group.Name}${Item.Asset.Name}ScriptDraw`, {
 					C, Item, PersistentData: () => AnimationPersistentDataGet(C, Item.Asset)
 				})
 			);
@@ -293,13 +293,15 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed) {
 		let XOffset = CharacterAppearanceXOffset(C, HeightRatio);
 		let YOffset = CharacterAppearanceYOffset(C, HeightRatio);
 		
-		// Calculate the vertical parameters, factoring in the character's height ratio, modifiers and the excess canvas overflow
-		let YStart = CanvasUpperOverflow - YOffset / HeightRatio;
-		let SourceHeight = 1000 / HeightRatio;
+		// Calculate the vertical parameters. In certain cases, cut off anything above the Y value.
+		let YCutOff = YOffset >= 0 || CurrentScreen == "ChatRoom";
+		let YStart = CanvasUpperOverflow + (YCutOff ? -YOffset / HeightRatio : 0);
+		let SourceHeight = 1000 / HeightRatio + (YCutOff ? 0 : -YOffset / HeightRatio);
 		let SourceY = IsInverted ? Canvas.height - (YStart + SourceHeight) : YStart;
-		
-		// Draw the character into a 500x1000 space
-		MainCanvas.drawImage(Canvas, 0, SourceY, Canvas.width / HeightRatio, SourceHeight, X + XOffset * Zoom, Y, 500 * Zoom, 1000 * Zoom);
+		let DestY = (IsInverted || YCutOff) ? 0 : YOffset;
+
+		// Draw the character
+		MainCanvas.drawImage(Canvas, 0, SourceY, Canvas.width, SourceHeight, X + XOffset * Zoom, Y + DestY * Zoom, 500 * HeightRatio * Zoom, (1000 - DestY) * Zoom);
 
 		// Draw the arousal meter & game images on certain conditions
 		DrawArousalMeter(C, X, Y, Zoom);
@@ -315,18 +317,19 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed) {
 					var Color = "#80808040";
 					if (InventoryGroupIsBlocked(C, AssetGroup[A].Name)) Color = "#88000580";
 					else if (InventoryGet(C, AssetGroup[A].Name) != null) Color = "#D5A30080";
-					DrawAssetGroupZone(C, AssetGroup[A].Zone, HeightRatio * Zoom, X + XOffset * Zoom, Y + YOffset * Zoom, Color, 5);
+					DrawAssetGroupZone(C, AssetGroup[A].Zone, Zoom, X, Y, HeightRatio, Color, 5);
 				}
 
 			// Draw the focused zone in cyan
-			DrawAssetGroupZone(C, C.FocusGroup.Zone, HeightRatio * Zoom, X + XOffset * Zoom, Y + YOffset * Zoom, "cyan");
+			DrawAssetGroupZone(C, C.FocusGroup.Zone, Zoom, X, Y, HeightRatio, "cyan");
 		}
 
 		// Draw the character name below herself
 		if ((C.Name != "") && ((CurrentModule == "Room") || (CurrentModule == "Online") || ((CurrentScreen == "Wardrobe") && (C.ID != 0))) && (CurrentScreen != "Private"))
 			if (!Player.IsBlind() || (Player.GameplaySettings && Player.GameplaySettings.SensDepChatLog == "SensDepLight")) {
 				MainCanvas.font = CommonGetFont(30);
-				DrawText(C.Name, X + 255 * Zoom, Y + 980 * Zoom, (CommonIsColor(C.LabelColor)) ? C.LabelColor : "White", "Black");
+				let NameOffset = CurrentScreen == "ChatRoom" && ChatRoomCharacter.length > 5 && CurrentCharacter == null ? -4 : 0;
+				DrawText(C.Name, X + 255 * Zoom, Y + 980 * Zoom + NameOffset, (CommonIsColor(C.LabelColor)) ? C.LabelColor : "White", "Black");
 				MainCanvas.font = CommonGetFont(36);
 			}
 
@@ -340,20 +343,18 @@ function DrawCharacter(C, X, Y, Zoom, IsHeightResizeAllowed) {
  * @param {number} Zoom - Height ratio of the character
  * @param {number} X - Position of the character on the X axis
  * @param {number} Y - Position of the character on the Y axis
+ * @param {number} HeightRatio - The displayed height ratio of the character
  * @param {string} Color - Color of the zone outline
  * @param {number} [Thickness=3] - Thickness of the outline
  * @param {string} FillColor - If non-empty, the color to fill the rectangle with
  * @returns {void} - Nothing
  */
-function DrawAssetGroupZone(C, Zone, Zoom, X, Y, Color, Thickness = 3, FillColor) {
+function DrawAssetGroupZone(C, Zone, Zoom, X, Y, HeightRatio, Color, Thickness = 3, FillColor) {
 	for (let Z = 0; Z < Zone.length; Z++) {
-		let Left = X + Zone[Z][0] * Zoom;
-		let Top = CharacterAppearsInverted(C) ? 1000 - (Y + (Zone[Z][1] + Zone[Z][3]) * Zoom) : Y + Zone[Z][1] * Zoom;
-		let Width = Zone[Z][2] * Zoom;
-		let Height = Zone[Z][3] * Zoom;
+		let CZ = DialogGetCharacterZone(C, Zone[Z], X, Y, Zoom, HeightRatio);
 
-		if (FillColor != null) DrawRect(Left, Top, Width, Height, FillColor);
-		DrawEmptyRect(Left, Top, Width, Height, Color, Thickness);
+		if (FillColor != null) DrawRect(CZ[0], CZ[1], CZ[2], CZ[3], FillColor);
+		DrawEmptyRect(CZ[0], CZ[1], CZ[2], CZ[3], Color, Thickness);
 	}
 }
 
@@ -405,23 +406,28 @@ function DrawImageResize(Source, X, Y, Width, Height) {
  * @param {number} X - Position of the image on the X axis
  * @param {number} Y - Position of the image on the Y axis
  * @param {number[][]} AlphaMasks - A list of alpha masks to apply to the asset
+ * @param {number} Opacity - The opacity at which to draw the image
  * @returns {boolean} - whether the image was complete or not
  */
-function DrawImageCanvas(Source, Canvas, X, Y, AlphaMasks) {
+function DrawImageCanvas(Source, Canvas, X, Y, AlphaMasks, Opacity) {
 	var Img = DrawGetImage(Source);
 	if (!Img.complete) return false;
 	if (!Img.naturalWidth) return true;
+	let SourceImage = Img;
 	if (AlphaMasks && AlphaMasks.length) {
-		var tmpCanvas = document.createElement("canvas");
+		SourceImage = document.createElement("canvas");
 		tmpCanvas.width = Img.width;
 		tmpCanvas.height = Img.height;
 		var ctx = tmpCanvas.getContext('2d');
 		ctx.drawImage(Img, 0, 0);
 		AlphaMasks.forEach(([x, y, w, h]) => ctx.clearRect(x - X, y - Y, w, h));
 		Canvas.drawImage(tmpCanvas, X, Y);
-	} else {
-		Canvas.drawImage(Img, X, Y);
 	}
+	Opacity = typeof Opacity === "number" ? Opacity : 1;
+	Canvas.save();
+	Canvas.globalAlpha = Opacity;
+	Canvas.drawImage(SourceImage, X, Y);
+	Canvas.restore();
 	return true;
 }
 
@@ -509,9 +515,10 @@ function DrawImage(Source, X, Y, Invert) {
  * @param {string} HexColor - Color of the image to draw
  * @param {boolean} FullAlpha - Whether or not it is drawn in full alpha mode
  * @param {number[][]} AlphaMasks - A list of alpha masks to apply to the asset
+ * @param {number} Opacity - The opacity at which to draw the image
  * @returns {boolean} - whether the image was complete or not
  */
-function DrawImageCanvasColorize(Source, Canvas, X, Y, Zoom, HexColor, FullAlpha, AlphaMasks) {
+function DrawImageCanvasColorize(Source, Canvas, X, Y, Zoom, HexColor, FullAlpha, AlphaMasks, Opacity) {
 
 	// Make sure that the starting image is loaded
 	var Img = DrawGetImage(Source);
@@ -556,7 +563,11 @@ function DrawImageCanvasColorize(Source, Canvas, X, Y, Zoom, HexColor, FullAlpha
 	if (AlphaMasks && AlphaMasks.length) {
 		AlphaMasks.forEach(([x, y, w, h]) => ctx.clearRect(x - X, y - Y, w, h));
 	}
+	Opacity = typeof Opacity === "number" ? Opacity : 1;
+	Canvas.save();
+	Canvas.globalAlpha = Opacity;
 	Canvas.drawImage(ctx.canvas, 0, 0, Img.width, Img.height, X, Y, Img.width * Zoom, Img.height * Zoom);
+	Canvas.restore();
 
 	return true;
 }

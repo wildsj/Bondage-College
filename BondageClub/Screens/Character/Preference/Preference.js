@@ -7,7 +7,7 @@ var PreferenceColorPick = "";
 var PreferenceSubscreen = "";
 var PreferenceSubscreenList = ["General", "Difficulty", "Restriction", "Chat", "Audio", "Arousal", "Security", "Online", "Visibility", "Immersion", "Graphics"];
 var PreferenceChatColorThemeSelected = "";
-var PreferenceChatColorThemeList = ["Light", "Dark"];
+var PreferenceChatColorThemeList = ["Light", "Dark", "Light2", "Dark2"];
 var PreferenceChatColorThemeIndex = 0;
 var PreferenceChatEnterLeaveSelected = "";
 var PreferenceChatEnterLeaveList = ["Normal", "Smaller", "Hidden"];
@@ -270,9 +270,9 @@ function PreferenceInit(C) {
 	if (!C.ImmersionSettings) C.ImmersionSettings = {};
 	if (typeof C.ImmersionSettings.BlockGaggedOOC !== "boolean") C.ImmersionSettings.BlockGaggedOOC = false;
 	if (typeof C.ImmersionSettings.ReturnToChatRoom !== "boolean") C.ImmersionSettings.ReturnToChatRoom = false;
-	if ((C.ID == 0) && (C.GetDifficulty() >= 2)) C.ImmersionSettings.ReturnToChatRoom = true;
+	if ((C.ID == 0) && (C.GetDifficulty() >= 3)) C.ImmersionSettings.ReturnToChatRoom = true;
 	if (typeof C.ImmersionSettings.ReturnToChatRoomAdmin !== "boolean") C.ImmersionSettings.ReturnToChatRoomAdmin = false;
-	if ((C.ID == 0) && (C.GetDifficulty() >= 2)) C.ImmersionSettings.ReturnToChatRoomAdmin = true;
+	if ((C.ID == 0) && (C.GetDifficulty() >= 3)) C.ImmersionSettings.ReturnToChatRoomAdmin = true;
 	if (typeof C.LastChatRoom !== "string") C.LastChatRoom = "";
 	if (typeof C.LastChatRoomBG !== "string") C.LastChatRoomBG = "";
 	if (typeof C.LastChatRoomPrivate !== "boolean") C.LastChatRoomPrivate = false;
@@ -758,7 +758,7 @@ function PreferenceSubscreenImmersionClick() {
 			if (MouseX <= 625) PreferenceSettingsSensDepIndex = (PreferenceSettingsSensDepList.length + PreferenceSettingsSensDepIndex - 1) % PreferenceSettingsSensDepList.length;
 			else PreferenceSettingsSensDepIndex = (PreferenceSettingsSensDepIndex + 1) % PreferenceSettingsSensDepList.length;
 			Player.GameplaySettings.SensDepChatLog = PreferenceSettingsSensDepList[PreferenceSettingsSensDepIndex];
-			if (Player.GameplaySettings.SensDepChatLog == "SensDepExtreme") ChatRoomTargetMemberNumber = null;
+			if (Player.GameplaySettings.SensDepChatLog == "SensDepExtreme") ChatRoomSetTarget(null);
 		}
 
 		// Preference check boxes
@@ -768,7 +768,7 @@ function PreferenceSubscreenImmersionClick() {
 			Player.GameplaySettings.DisableAutoRemoveLogin = !Player.GameplaySettings.DisableAutoRemoveLogin;
 		if (MouseIn(500, 432, 64, 64) && (!Player.GameplaySettings.ImmersionLockSetting || (!Player.IsRestrained()))) {
 			Player.ImmersionSettings.BlockGaggedOOC = !Player.ImmersionSettings.BlockGaggedOOC;
-			if (Player.ImmersionSettings.BlockGaggedOOC) ChatRoomTargetMemberNumber = null;
+			if (Player.ImmersionSettings.BlockGaggedOOC) ChatRoomSetTarget(null);
 		}
 		if (MouseIn(500, 512, 64, 64) && (!Player.GameplaySettings.ImmersionLockSetting || (!Player.IsRestrained())))
 			Player.OnlineSharedSettings.AllowPlayerLeashing = !Player.OnlineSharedSettings.AllowPlayerLeashing;
@@ -908,13 +908,13 @@ function PreferenceSubscreenArousalRun() {
 		// Draws all the available character zones
 		for (let A = 0; A < AssetGroup.length; A++)
 			if ((AssetGroup[A].Zone != null) && (AssetGroup[A].Activity != null))
-				DrawAssetGroupZone(Player, AssetGroup[A].Zone, 0.9, 50, 50, "#808080FF", 3, PreferenceGetFactorColor(PreferenceGetZoneFactor(Player, AssetGroup[A].Name)));
+				DrawAssetGroupZone(Player, AssetGroup[A].Zone, 0.9, 50, 50, 1, "#808080FF", 3, PreferenceGetFactorColor(PreferenceGetZoneFactor(Player, AssetGroup[A].Name)));
 
 		// The zones can be selected and drawn on the character
 		if (Player.FocusGroup != null) {
 			DrawCheckbox(1230, 813, 64, 64, TextGet("ArousalAllowOrgasm"), PreferenceGetZoneOrgasm(Player, Player.FocusGroup.Name));
 			DrawText(TextGet("ArousalZone" + Player.FocusGroup.Name) + " - " + TextGet("ArousalConfigureErogenousZones"), 550, 745, "Black", "Gray");
-			DrawAssetGroupZone(Player, Player.FocusGroup.Zone, 0.9, 50, 50, "cyan");
+			DrawAssetGroupZone(Player, Player.FocusGroup.Zone, 0.9, 50, 50, 1, "cyan");
 			MainCanvas.textAlign = "center";
 			DrawBackNextButton(550, 813, 600, 64, TextGet("ArousalZoneLove" + PreferenceArousalZoneFactor), PreferenceGetFactorColor(PreferenceGetZoneFactor(Player, Player.FocusGroup.Name)), "", () => "", () => "");
 			Player.FocusGroup
@@ -1243,7 +1243,7 @@ function PreferenceSubscreenArousalClick() {
 		for (let A = 0; A < AssetGroup.length; A++)
 			if ((AssetGroup[A].Zone != null) && (AssetGroup[A].Activity != null))
 				for (let Z = 0; Z < AssetGroup[A].Zone.length; Z++)
-					if (DialogClickedInZone(Player, AssetGroup[A].Zone[Z], 0.9, 50, 50)) {
+					if (DialogClickedInZone(Player, AssetGroup[A].Zone[Z], 0.9, 50, 50, 1)) {
 						Player.FocusGroup = AssetGroup[A];
 						PreferenceArousalZoneFactor = PreferenceGetZoneFactor(Player, AssetGroup[A].Name);
 					}

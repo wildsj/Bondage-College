@@ -344,7 +344,7 @@ function ChatSearchResponse(data) {
 			ChatRoomClearAllElements();
 			CommonSetScreen("Online", "ChatSearch");
 			CharacterDeleteAllOnline();
-			ChatSearchSetLastChatRoom("")
+			ChatRoomSetLastChatRoom("");
 		}
 		ChatSearchMessage = "Response" + data;
 	}
@@ -370,18 +370,25 @@ function ChatSearchResultResponse(data) {
 			}
 	} else if (Player.ImmersionSettings && Player.LastChatRoom && Player.LastChatRoom != "" && Player.ImmersionSettings.ReturnToChatRoom) {
 		var found = false
+		var roomIsFull = false
 		for (let R = 0; R < data.length; R++) {
 			var room = data[R]
-			if (room.Name == Player.LastChatRoom && room.MemberCount < room.MemberLimit && room.Game == "") {
-				var RoomName = room.Name;
-				if (ChatSearchLastQueryJoin != RoomName || (ChatSearchLastQueryJoin == RoomName && ChatSearchLastQueryJoinTime + 1000 < CommonTime())) {
-					found = true
-					ChatSearchLastQueryJoinTime = CommonTime();
-					ChatSearchLastQueryJoin = RoomName;
-					ChatRoomPlayerCanJoin = true;
-					ServerSend("ChatRoomJoin", { Name: RoomName });
+			if (room.Name == Player.LastChatRoom && room.Game == "") {
+				if (room.MemberCount < room.MemberLimit) {
+					var RoomName = room.Name;
+					if (ChatSearchLastQueryJoin != RoomName || (ChatSearchLastQueryJoin == RoomName && ChatSearchLastQueryJoinTime + 1000 < CommonTime())) {
+						found = true
+						ChatSearchLastQueryJoinTime = CommonTime();
+						ChatSearchLastQueryJoin = RoomName;
+						ChatRoomPlayerCanJoin = true;
+						ServerSend("ChatRoomJoin", { Name: RoomName });
+						break;
+					}
+				} else {
+					roomIsFull = true
 					break;
 				}
+
 			}
 		}
 		if (!found) {
@@ -396,17 +403,20 @@ function ChatSearchResultResponse(data) {
 				var block = []
 				var ChatRoomName = Player.LastChatRoom;
 				var ChatRoomDesc = Player.LastChatRoomDesc;
-				if (Player.LastChatRoomPrivate) {
+				/*if (Player.LastChatRoomPrivate) {
 					ChatRoomName = Player.Name + Player.MemberNumber
 					ChatRoomDesc = ""
+				} else*/
+				if (roomIsFull) {
+					ChatRoomName = ChatRoomName.substring(0, Math.min(ChatRoomName.length, 16)) + Math.floor(1+Math.random() * 998); // Added 
 				}
 				if (ChatBlockItemCategory) block = ChatBlockItemCategory
 				var NewRoom = {
 					Name: ChatRoomName.trim(),
 					Description: ChatRoomDesc.trim(),
 					Background: Player.LastChatRoomBG,
-					Private: false,
-					Space: "",
+					Private: Player.LastChatRoomPrivate,
+					Space: ChatRoomSpace,
 					Game: "",
 					Admin: [Player.MemberNumber],
 					Limit: ("" + Math.min(Math.max(Player.LastChatRoomSize, 2), 10)).trim(),

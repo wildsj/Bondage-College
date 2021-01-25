@@ -109,10 +109,6 @@ ItemFeetMedicalBedRestraintsBase,Bed Straps
 ItemFeetMedicalBedRestraintsStraps,Cuffs
 ItemLegsFuturisticLegCuffsCuffs,Cuffs
 ItemLegsFuturisticLegCuffsDisplay,Display
-ItemLegsCeilingShacklesChain,Chain
-ItemLegsCeilingShacklesCuffs,Cuffs
-ItemLegsFuturisticCuffsCuffs,Cuffs
-ItemLegsFuturisticCuffsDisplay,Display
 ItemLegsOrnateLegCuffsGems,Gems
 ItemLegsLegBinderLatex,Binder
 ItemLegsLegBinderBelts,Belts
@@ -138,6 +134,11 @@ ItemButtFoxTail2Base,Tail
 ItemButtFoxTail2Tip,Tip
 ItemButtSuccubusHeartButtPlugTail,Tail
 ItemButtSuccubusHeartButtPlugHeart,Heart
+ItemButtTailButtPlugTail,Tail
+ItemButtTailButtPlugRibbon,Ribbon
+ItemButtTailButtPlugBell,Bell
+ItemButtFoxTailsBases,Tails
+ItemButtFoxTailsTips,Tips
 ItemPelvisOrnateChastityBeltBelt,Belt
 ItemPelvisOrnateChastityBeltGems,Gems
 ItemNipplesTapedVibeEggsEgg1,Left Vibe Egg
@@ -198,6 +199,10 @@ ItemArmsFuturisticArmbinderBand,Band
 ItemArmsFuturisticArmbinderStraps,Straps
 ItemArmsMedicalBedRestraintsBase,Bed Straps
 ItemArmsMedicalBedRestraintsStraps,Cuffs
+ItemArmsCeilingShacklesChain,Chain
+ItemArmsCeilingShacklesCuffs,Cuffs
+ItemArmsFuturisticCuffsCuffs,Cuffs
+ItemArmsFuturisticCuffsDisplay,Display
 ItemHandsFuturisticMittensBody,Body
 ItemHandsFuturisticMittensMesh,Mesh
 ItemHandsFuturisticMittensDisplay,Display
@@ -237,13 +242,9 @@ ItemDevicesCryoCapsuleInside,Bottom
 ItemDevicesCryoCapsuleFrame,Frame
 ItemDevicesCryoCapsuleOpen,Lid (open)
 ItemDevicesCryoCapsuleClosed,Lid (closed)
-ItemAddonCoversOuter,Outer
-ItemAddonCoversInner,Inner
 ItemDevicesCageFrame,Frame
 ItemDevicesCageMesh,Mesh
 ItemDevicesCageTint,Tint
-ItemNoseNoseHookBand,Strap
-ItemNoseNoseHookHook,Hook
 ItemDevicesX-CrossCross,Frame
 ItemDevicesX-CrossPadding,Padding
 ItemDevicesChangingTableFrame,Frame
@@ -251,8 +252,14 @@ ItemDevicesChangingTableTable,Tabletop
 ItemDevicesConcealingCloakFront,Cloak
 ItemDevicesConcealingCloakStrap,Straps
 ItemDevicesTransportWoodenBoxBox,Box
-ItemDevicesTransportWoodenBoxWheelholders,Wheel Holders 
+ItemDevicesTransportWoodenBoxWheelholders,Wheel Holders
 ItemDevicesTransportWoodenBoxWheels,Wheels
+ItemDevicesWoodenBoxBack,Wood
+ItemDevicesWoodenBoxText,Text
+ItemAddonCoversOuter,Outer
+ItemAddonCoversInner,Inner
+ItemNoseNoseHookBand,Strap
+ItemNoseNoseHookHook,Hook
 ItemHoodPumpkinHeadFront,Front
 ItemHoodPumpkinHeadBack,Back
 ItemHoodLatexHoodOpenHairHair,Hair
@@ -270,6 +277,8 @@ ItemHoodGP9GasMaskMouth,Mouthpiece
 ItemHoodGP9GasMaskLens,Lens
 ItemHoodGP9GasMaskMask,Mask
 ItemHoodGP9GasMaskEdges,Edges
+ItemHoodCanvasHoodHood,Canvas
+ItemHoodCanvasHoodText,Text
 ItemBootsLockingBoots1Boots,Boots
 ItemBootsLockingBoots1Straps,Straps
 ItemBootsFuturisticHeelsShoes,Body
@@ -281,6 +290,8 @@ ShoesBoots1Sides,Outer
 ShoesBoots1Laces,Laces
 ShoesSandalsRSTop,Top
 ShoesSandalsRSSoles,Soles
+ShoesFlippersShoes,Shoes
+ShoesFlippersFins,Fins
 ItemMouthWiffleGagStrap,Strap
 ItemMouthWiffleGagBall,Ball
 ItemMouthHarnessBallGagBall,Ball
@@ -452,6 +463,9 @@ MaskKittyMask3Mask,Mask
 ItemTorsoFuturisticHarnessBand,Straps
 ItemTorsoFuturisticHarnessDisplay,Display
 ItemTorsoFuturisticHarnessMesh,Module
+ItemTorsoFuturisticHarness2Band,Straps
+ItemTorsoFuturisticHarness2Display,Display
+ItemTorsoFuturisticHarness2Mesh,Module
 ItemBreastFuturisticBraBra,Body
 ItemBreastFuturisticBraDisplay,Display
 ItemBreastFuturisticBraMesh,Mesh

@@ -68,6 +68,7 @@ function ServerSetConnected(connected, errorMessage) {
 		LoginErrorMessage = "";
 	} else {
 		LoginErrorMessage = errorMessage || "";
+		LoginSubmitted = false;
 	}
 	LoginUpdateMessage();
 }
@@ -264,7 +265,7 @@ function ServerValidateProperties(C, Item, Validation) {
 	// Remove LockMemberNumber if the source is incorrect prior to all checks
 	if ((Item.Property != null) && (C.ID == 0) && (Validation != null) && (Validation.SourceMemberNumber != null)) {
 		var Lock = InventoryGetLock(Item);
-		if ((Lock != null) && (Lock.Asset != null)) {
+		if ((Lock != null) && (Lock.Property != null)) {
 			if (!Validation.FromOwner && Lock.Asset.OwnerOnly) delete Item.Property.LockMemberNumber;
 			else if (!Validation.FromLoversOrOwner && Lock.Asset.LoverOnly) delete Item.Property.LockMemberNumber;
 		}
@@ -285,19 +286,7 @@ function ServerValidateProperties(C, Item, Validation) {
 				    // Check if a lock on the items sub type is allowed
 				    (Item.Property && Item.Asset.AllowLockType && !Item.Asset.AllowLockType.includes(Item.Property.Type))
 			    )) {
-				delete Item.Property.LockedBy;
-				delete Item.Property.LockMemberNumber;
-				delete Item.Property.CombinationNumber;
-				delete Item.Property.Password;
-				delete Item.Property.Hint;
-				delete Item.Property.LockSet;
-				delete Item.Property.RemoveTimer;
-				delete Item.Property.MaxTimer;
-				delete Item.Property.RemoveItem;
-				delete Item.Property.ShowTimer;
-				delete Item.Property.EnableRandomInput;
-				delete Item.Property.MemberNumberList;
-				Item.Property.Effect.splice(E, 1);
+				ServerDeleteLock(Item.Property);
 			}
 
 			// If the item is locked by a lock
@@ -311,7 +300,7 @@ function ServerValidateProperties(C, Item, Validation) {
 						Item.Property.CombinationNumber = "0000";
 					}
 				} else delete Item.Property.CombinationNumber;
-				
+
 				// Make sure the password on the lock is valid, 6 letters only
 				var Lock = InventoryGetLock(Item);
 				if ((Item.Property.Password != null) && (typeof Item.Property.Password == "string")) {
@@ -335,35 +324,11 @@ function ServerValidateProperties(C, Item, Validation) {
 
 				// Make sure the owner lock is valid
 				if (Lock.Asset.OwnerOnly && ((LockNumber == null) || ((LockNumber != C.MemberNumber) && (LockNumber != OwnerNumber)))) {
-					delete Item.Property.LockedBy;
-					delete Item.Property.LockMemberNumber;
-					delete Item.Property.CombinationNumber;
-					delete Item.Property.Password;
-					delete Item.Property.Hint;
-					delete Item.Property.LockSet;
-					delete Item.Property.RemoveTimer;
-					delete Item.Property.MaxTimer;
-					delete Item.Property.RemoveItem;
-					delete Item.Property.ShowTimer;
-					delete Item.Property.EnableRandomInput;
-					delete Item.Property.MemberNumberList;
-					Item.Property.Effect.splice(E, 1);
+					ServerDeleteLock(Item.Property);
 				}
 
 				if (Lock.Asset.LoverOnly && ((LockNumber == null) || (C.GetLoversNumbers().length == 0) || ((LockNumber != C.MemberNumber) && !C.GetLoversNumbers().includes(LockNumber) && !((LockNumber == OwnerNumber) && ((C.ID != 0) || !LogQuery(C, "BlockLoverLockOwner", "LoverRule")))))) {
-					delete Item.Property.LockedBy;
-					delete Item.Property.LockMemberNumber;
-					delete Item.Property.CombinationNumber;
-					delete Item.Property.Password;
-					delete Item.Property.Hint;
-					delete Item.Property.LockSet;
-					delete Item.Property.RemoveTimer;
-					delete Item.Property.MaxTimer;
-					delete Item.Property.RemoveItem;
-					delete Item.Property.ShowTimer;
-					delete Item.Property.EnableRandomInput;
-					delete Item.Property.MemberNumberList;
-					Item.Property.Effect.splice(E, 1);
+					ServerDeleteLock(Item.Property);
 				}
 
 			}
@@ -413,6 +378,37 @@ function ServerValidateProperties(C, Item, Validation) {
 	// Remove impossible combinations
 	if ((Item.Property != null) && (Item.Property.Type == null) && (Item.Property.Restrain == null))
 		["SetPose", "Difficulty", "SelfUnlock", "Hide"].forEach(P => delete Item.Property[P]);
+
+	// Keeps item opacity within the allowed range
+	if (Item.Property && typeof Item.Property.Opacity === "number") {
+		if (Item.Property.Opacity > Item.Asset.MaxOpacity) Item.Property.Opacity = Item.Asset.MaxOpacity;
+		if (Item.Property.Opacity < Item.Asset.MinOpacity) Item.Property.Opacity = Item.Asset.MinOpacity;
+	}
+}
+
+/**
+ * Completely removes a lock from an item
+ * @param {object} Property - The item to remove the lock from
+ * @returns {void} - Nothing
+ */
+function ServerDeleteLock(Property) {
+	if (Property) {
+		delete Property.LockedBy;
+		delete Property.LockMemberNumber;
+		delete Property.CombinationNumber;
+		delete Property.Password;
+		delete Property.Hint;
+		delete Property.LockSet;
+		delete Property.RemoveTimer;
+		delete Property.MaxTimer;
+		delete Property.RemoveItem;
+		delete Property.ShowTimer;
+		delete Property.EnableRandomInput;
+		delete Property.MemberNumberList;
+		if (Array.isArray(Property.Effect)) {
+			Property.Effect = Property.Effect.filter(E => E !== "Lock");
+		}
+	}
 }
 
 /**
@@ -498,6 +494,12 @@ function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumb
 				// Sets the item properties and make sure a non-owner cannot add an owner lock
 				if (Bundle[A].Property != null) {
 					NA.Property = Bundle[A].Property;
+
+					// If a non-owner/lover has added an owner/lover-only lock, remove it
+					const Lock = InventoryGetLock(NA);
+					if (C.ID === 0 && !FromOwner && Lock && Lock.Asset.OwnerOnly) ServerDeleteLock(NA.Property);
+					if (C.ID === 0 && !FromLoversOrOwner && Lock && Lock.Asset.LoverOnly) ServerDeleteLock(NA.Property);
+
 					ServerValidateProperties(C, NA, { SourceMemberNumber: SourceMemberNumber, FromOwner: FromOwner, FromLoversOrOwner: FromLoversOrOwner });
 				}
 
@@ -574,7 +576,7 @@ function ServerItemCopyProperty(C, Item, NewProperty) {
 	if (Item.Property.LockMemberNumber != null) NewProperty.LockMemberNumber = Item.Property.LockMemberNumber; else delete NewProperty.LockMemberNumber;
 	if (Item.Property.CombinationNumber != null) NewProperty.CombinationNumber = Item.Property.CombinationNumber; else delete NewProperty.CombinationNumber;
 	if (Item.Property.RemoveItem != null) NewProperty.RemoveItem = Item.Property.RemoveItem; else delete NewProperty.RemoveItem;
-	if (Item.Property.ShowTimer != null) NNewProperty.ShowTimer = Item.Property.ShowTimer; else delete NewProperty.ShowTimer;
+	if (Item.Property.ShowTimer != null) NewProperty.ShowTimer = Item.Property.ShowTimer; else delete NewProperty.ShowTimer;
 	if (Item.Property.EnableRandomInput != null) NewProperty.EnableRandomInput = Item.Property.EnableRandomInput; else delete NewProperty.EnableRandomInput;
 	if (!NewProperty.EnableRandomInput || NewProperty.LockedBy != "LoversTimerPadlock") {
 		if (Item.Property.MemberNumberList != null) NewProperty.MemberNumberList = Item.Property.MemberNumberList; else delete NewProperty.MemberNumberList;
